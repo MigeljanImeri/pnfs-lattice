@@ -553,6 +553,7 @@ enum mds_catalogue_backend {
                                *   selectable. */
     /* Values are appended after the sentinel, never renumbered. */
     MDS_BACKEND_DAOS    = 4,  /**< DAOS backend (ENABLE_DAOS builds). */
+    MDS_BACKEND_NULL	= 5,
 };
 
 /* -----------------------------------------------------------------------

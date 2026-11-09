@@ -110,6 +110,12 @@ elseif(ENABLE_TESTS)
         "integration tests open their catalogues through the in-memory backend")
 endif()
 
+if(ENABLE_NULL)
+    target_sources(pnfs_mds_core PRIVATE
+        ${PROJECT_SOURCE_DIR}/src/catalogue/catalogue_null.c
+    )
+    target_compile_definitions(pnfs_mds_core PUBLIC HAVE_NULL=1)
+endif()
 # FoundationDB backend (ENABLE_FDB).  Compiled into the core archive like
 # the other backends (HAVE_FDB=1 is the global definition set next to
 # the option).  The fdb_c client is linked PUBLIC because every consumer

@@ -35,6 +35,9 @@
 #ifdef HAVE_DAOS
 #include "catalogue_daos.h"
 #endif
+#ifdef HAVE_NULL
+#include "catalogue_null.h"
+#endif
 
 /** One row per known backend.  open == NULL means "known, not compiled
  *  in". */
@@ -73,6 +76,14 @@ static const struct catalogue_backend_entry catalogue_backends[] = {
 		.id   = MDS_BACKEND_DAOS,
 #ifdef HAVE_DAOS
 		.open = catalogue_daos_open,
+#else
+		.open = NULL,
+#endif
+	},
+	{
+		.id   = MDS_BACKEND_NULL,
+#ifdef HAVE_NULL
+		.open = catalogue_null_open,
 #else
 		.open = NULL,
 #endif
